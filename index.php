@@ -3,12 +3,24 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<meta name="fontiran.com:license" content="C5MMR" />
 <title><?php bloginfo('name'); ?> | <?php if( is_home() ) : echo bloginfo( 'description' ); endif; ?><?php wp_title( '', true ); ?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php wp_head(); ?>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127388892-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-127388892-1');
+    </script>
+
 
 </head>
 
@@ -31,14 +43,15 @@
 				echo get_avatar( $admin_email, 100 ); 
 			?>
 		</div><!--/ author -->
-		
+
 		<div id="brand">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> &mdash; <span><?php echo get_bloginfo( 'description' ); ?></span></h1>
+			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<h1 class="site-title"><span><?php echo get_bloginfo( 'description' ); ?></span></h1>
 		</div><!-- /brand -->
 	
-		<nav role="navigation" class="site-navigation main-navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav><!-- .site-navigation .main-navigation -->
+<!--		<nav role="navigation" class="site-navigation main-navigation">-->
+<!--			--><?php //wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+<!--		</nav>-->
 		
 		<div class="clear"></div>
 	</div><!--/container -->
@@ -73,7 +86,7 @@
 						<div class="post-meta">
 							<?php if( comments_open() ) : ?>
 								<span class="comments-link">
-									<?php comments_popup_link( __( 'Comment', 'break' ), __( '1 Comment', 'break' ), __( '% Comments', 'break' ) ); ?>
+									<?php comments_popup_link( __( 'نظر بده', 'break' ), __( '1 نظر', 'break' ), __( '% نظر', 'break' ) ); ?>
 								</span>
 							<?php endif; ?>
 						
@@ -131,7 +144,7 @@
 						<div class="post-meta">
 							<?php if( comments_open() ) : ?>
 								<span class="comments-link">
-									<?php comments_popup_link( __( 'Comment', 'less' ), __( '1 Comment', 'less' ), __( '% Comments', 'less' ) ); ?>
+									<?php comments_popup_link( __( 'نظرتو بده', 'less' ), __( '1 نظر', 'less' ), __( '% نظر', 'less' ) ); ?>
 								</span>
 							<?php endif; ?>
 						
@@ -222,7 +235,7 @@
 		<?php do_action( 'break_credits' ); ?>
 		<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
 		<span class="sep"> and </span>
-		<a href="https://github.com/mmirzaee/Less" rel="theme">Less</a> by <a href="http://alimrz.com" rel="designer">Ali M.Mirzaee</a>
+		forked from <a href="https://github.com/mmirzaee/Less" rel="theme">Less</a> edited by <a href="https://sejil.me" rel="designer">SejiL</a>
 	</div><!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
 
