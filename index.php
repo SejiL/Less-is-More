@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
-<meta name="fontiran.com:license" content="C5MMR" />
-<title><?php bloginfo('name'); ?> | <?php if( is_home() ) : echo bloginfo( 'description' ); endif; ?><?php wp_title( '', true ); ?></title>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width">
+    <meta name="fontiran.com:license" content="C5MMR">
 
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+    <!--    <meta name="theme-color" content="#0F94E9">-->
 
-<?php wp_head(); ?>
+    <title><?php bloginfo('name'); ?> | <?php if( is_home() ) : echo bloginfo( 'description' ); endif; ?><?php wp_title( '', true ); ?></title>
+
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+    <?php wp_head(); ?>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127388892-1"></script>
@@ -28,215 +31,215 @@
 
 
 <?php
-	/*-----------------------------------------------------------------------------------*/
-	/* Start header
-	/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* Start header
+/*-----------------------------------------------------------------------------------*/
 ?>
 
 <header id="masthead" class="site-header" role="banner">
-	<div class="container">
-		
-		<div class="gravatar">
-			<?php 
-				// grab admin email and their photo
-				$admin_email = get_option('admin_email');
-				echo get_avatar( $admin_email, 100 ); 
-			?>
-		</div><!--/ author -->
+    <div class="container">
 
-		<div id="brand">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h1 class="site-title"><span><?php echo get_bloginfo( 'description' ); ?></span></h1>
-		</div><!-- /brand -->
-	
-<!--		<nav role="navigation" class="site-navigation main-navigation">-->
-<!--			--><?php //wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-<!--		</nav>-->
-		
-		<div class="clear"></div>
-	</div><!--/container -->
-		
+        <div class="gravatar">
+            <?php
+            // grab admin email and their photo
+            $admin_email = get_option('admin_email');
+            echo get_avatar( $admin_email, 100 );
+            ?>
+        </div><!--/ author -->
+
+        <div id="brand">
+            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1 class="site-title"><span><?php echo get_bloginfo( 'description' ); ?></span></h1>
+        </div><!-- /brand -->
+
+        <!--		<nav role="navigation" class="site-navigation main-navigation">-->
+        <!--			--><?php //wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+        <!--		</nav>-->
+
+        <div class="clear"></div>
+    </div><!--/container -->
+
 </header><!-- #masthead .site-header -->
 
 <div class="container">
 
-	<div id="primary">
-		<div id="content" role="main">
+    <div id="primary">
+        <div id="content" role="main">
 
 
-<?php
-	/*-----------------------------------------------------------------------------------*/
-	/* Start Home loop
-	/*-----------------------------------------------------------------------------------*/
-	
-	if( is_home() || is_archive() ) {
-	
-?>
-			<?php if ( have_posts() ) : ?>
+            <?php
+            /*-----------------------------------------------------------------------------------*/
+            /* Start Home loop
+            /*-----------------------------------------------------------------------------------*/
 
-				<?php while ( have_posts() ) : the_post(); ?>
+            if( is_home() || is_archive() ) {
 
-					<article class="post">
-					
-						<h1 class="title">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-								<?php the_title() ?>
-							</a>
-						</h1>
-						<div class="post-meta">
-							<?php if( comments_open() ) : ?>
-								<span class="comments-link">
+                ?>
+                <?php if ( have_posts() ) : ?>
+
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <article class="post">
+
+                            <h1 class="title">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                    <?php the_title() ?>
+                                </a>
+                            </h1>
+                            <div class="post-meta" style="padding-top: 10px;">
+                                <?php if( comments_open() ) : ?>
+                                    <span class="comments-link" style="margin: 5px;">
 									<?php comments_popup_link( __( 'نظر بده', 'break' ), __( '1 نظر', 'break' ), __( '% نظر', 'break' ) ); ?>
 								</span>
-							<?php endif; ?>
-						
-						</div><!--/post-meta -->
-						
-						<div class="the-content">
-							<?php the_content( 'Continue...' ); ?>
-							
-							<?php wp_link_pages(); ?>
-						</div><!-- the-content -->
-						
-						<div class="meta clearfix">
-							<div class="category"><?php echo get_the_category_list(); ?></div>
-							<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); ?></div>
-						</div><!-- Meta -->
-						
-					</article>
+                                <?php endif; ?>
+                                <?php the_date('s:i:h d-m-Y', '<span>', '</span>'); ?>
+                            </div><!--/post-meta -->
 
-				<?php endwhile; ?>
-				
-				<!-- pagintation -->
-				<div id="pagination" class="clearfix">
-					<div class="past-page"><?php previous_posts_link( 'Newer &raquo;' ); ?></div>
-					<div class="next-page"><?php next_posts_link( ' &laquo; Older' ); ?></div>
-				</div><!-- pagination -->
+                            <div class="the-content">
+                                <?php the_content( 'ادامه نوشته ...' ); ?>
 
+                                <?php wp_link_pages(); ?>
+                            </div><!-- the-content -->
 
-			<?php else : ?>
-				
-				<article class="post error">
-					<h1 class="404">Nothing posted yet</h1>
-				</article>
+                            <div class="meta clearfix" style="margin-top: 10px;">
+                                <div class="category"><?php echo get_the_category_list(); ?></div>
+                                <div class="tags"><?php echo get_the_tag_list('&nbsp;', '&nbsp;'); ?> - </div>
+                            </div><!-- Meta -->
 
-			<?php endif; ?>
+                        </article>
 
-		
-	<?php } //end is_home(); ?>
+                    <?php endwhile; ?>
 
-<?php
-	/*-----------------------------------------------------------------------------------*/
-	/* Start Single loop
-	/*-----------------------------------------------------------------------------------*/
-	
-	if( is_single() ) {
-?>
+                    <!-- pagintation -->
+                    <div id="pagination" class="clearfix">
+                        <div class="past-page"><?php previous_posts_link( 'Newer &raquo;' ); ?></div>
+                        <div class="next-page"><?php next_posts_link( ' &laquo; Older' ); ?></div>
+                    </div><!-- pagination -->
 
 
-			<?php if ( have_posts() ) : ?>
+                <?php else : ?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+                    <article class="post error">
+                        <h1 class="404">Nothing posted yet</h1>
+                    </article>
 
-					<article class="post">
-					
-						<h1 class="title"><?php the_title() ?></h1>
-						<div class="post-meta">
-							<?php if( comments_open() ) : ?>
-								<span class="comments-link">
+                <?php endif; ?>
+
+
+            <?php } //end is_home(); ?>
+
+            <?php
+            /*-----------------------------------------------------------------------------------*/
+            /* Start Single loop
+            /*-----------------------------------------------------------------------------------*/
+
+            if( is_single() ) {
+                ?>
+
+
+                <?php if ( have_posts() ) : ?>
+
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <article class="post">
+
+                            <h1 class="title"><?php the_title() ?></h1>
+                            <div class="post-meta"  style="padding-top: 10px;">
+                                <?php if( comments_open() ) : ?>
+                                    <span class="comments-link" style="margin: 5px;">
 									<?php comments_popup_link( __( 'نظرتو بده', 'less' ), __( '1 نظر', 'less' ), __( '% نظر', 'less' ) ); ?>
 								</span>
-							<?php endif; ?>
-						
-						</div><!--/post-meta -->
-						
-						<div class="the-content">
-							<?php the_content( 'Continue...' ); ?>
-							
-							<?php wp_link_pages(); ?>
-						</div><!-- the-content -->
-						
-						<div class="meta clearfix">
-							<div class="category"><?php echo get_the_category_list(); ?></div>
-							<div class="tags"><?php echo get_the_tag_list( '| &nbsp;', '&nbsp;' ); ?></div>
-						</div><!-- Meta -->						
-						
-					</article>
+                                <?php endif; ?>
+                                <?php the_date('s:i:h d-m-Y', '<span>', '</span>'); ?>
+                            </div><!--/post-meta -->
 
-				<?php endwhile; ?>
-				
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || '0' != get_comments_number() )
-						comments_template( '', true );
-				?>
+                            <div class="the-content">
+                                <?php the_content( 'Continue...' ); ?>
 
+                                <?php wp_link_pages(); ?>
+                            </div><!-- the-content -->
 
-			<?php else : ?>
-				
-				<article class="post error">
-					<h1 class="404">Nothing posted yet</h1>
-				</article>
+                            <div class="meta clearfix" style="margin-top: 10px;">
+                                <div class="category"><?php echo get_the_category_list(); ?></div>
+                                <div class="tags"><?php echo get_the_tag_list('&nbsp;', '&nbsp;'); ?> - </div>
+                            </div><!-- Meta -->
 
-			<?php endif; ?>
+                        </article>
+
+                    <?php endwhile; ?>
+
+                    <?php
+                    // If comments are open or we have at least one comment, load up the comment template
+                    if ( comments_open() || '0' != get_comments_number() )
+                        comments_template( '', true );
+                    ?>
 
 
-	<?php } //end is_single(); ?>
-	
-<?php
-	/*-----------------------------------------------------------------------------------*/
-	/* Start Page loop
-	/*-----------------------------------------------------------------------------------*/
-	
-	if( is_page()) {
-?>
+                <?php else : ?>
 
-			<?php if ( have_posts() ) : ?>
+                    <article class="post error">
+                        <h1 class="404">Nothing posted yet</h1>
+                    </article>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+                <?php endif; ?>
 
-					<article class="post">
-					
-						<h1 class="title"><?php the_title() ?></h1>
-						
-						<div class="the-content">
-							<?php the_content(); ?>
-							
-							<?php wp_link_pages(); ?>
-						</div><!-- the-content -->
-						
-					</article>
 
-				<?php endwhile; ?>
+            <?php } //end is_single(); ?>
 
-			<?php else : ?>
-				
-				<article class="post error">
-					<h1 class="404">Nothing posted yet</h1>
-				</article>
+            <?php
+            /*-----------------------------------------------------------------------------------*/
+            /* Start Page loop
+            /*-----------------------------------------------------------------------------------*/
 
-			<?php endif; ?>
+            if( is_page()) {
+                ?>
 
-	<?php } // end is_page(); ?>
+                <?php if ( have_posts() ) : ?>
 
-		</div><!-- #content .site-content -->
-	</div><!-- #primary .content-area -->
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <article class="post">
+
+                            <h1 class="title"><?php the_title() ?></h1>
+
+                            <div class="the-content">
+                                <?php the_content(); ?>
+
+                                <?php wp_link_pages(); ?>
+                            </div><!-- the-content -->
+
+                        </article>
+
+                    <?php endwhile; ?>
+
+                <?php else : ?>
+
+                    <article class="post error">
+                        <h1 class="404">Nothing posted yet</h1>
+                    </article>
+
+                <?php endif; ?>
+
+            <?php } // end is_page(); ?>
+
+        </div><!-- #content .site-content -->
+    </div><!-- #primary .content-area -->
 
 </div><!-- / container-->
 
 <?php
-	/*-----------------------------------------------------------------------------------*/
-	/* Start Footer
-	/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/* Start Footer
+/*-----------------------------------------------------------------------------------*/
 ?>
 
 <footer class="site-footer" role="contentinfo">
-	<div class="site-info container">
-		<?php do_action( 'break_credits' ); ?>
-		<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
-		<span class="sep"> and </span>
-		forked from <a href="https://github.com/mmirzaee/Less" rel="theme">Less</a> edited by <a href="https://sejil.me" rel="designer">SejiL</a>
-	</div><!-- .site-info -->
+    <div class="site-info container">
+        <?php do_action( 'break_credits' ); ?>
+        <a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+        <span class="sep"> and </span>
+        <a href="https://github.com/sejil/Less-is-More" rel="theme">Less</a>
+    </div><!-- .site-info -->
 </footer><!-- #colophon .site-footer -->
 
 <?php wp_footer(); ?>
